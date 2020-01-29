@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     ProgressDialog progressDialog;
 
-    String url= "https://www.dictionary.com/browse/";
+    String url= "https://dictionary.cambridge.org/dictionary/english/";
     String urlname="white";
     String urlend="?s=t";
     String urlendw;
@@ -98,12 +98,18 @@ public class MainActivity extends AppCompatActivity {
             Document document;
 
             try {
-                document= (Document) Jsoup.connect(url + urlendw + urlend).get();
+                document= (Document) Jsoup.connect(url + urlendw).get();
                 //title = document.title();
 
-                Element lll=document.getElementsByClass("one-click-content css-1p89gle e1q3nk1v4").first();
+                Element lll=document.getElementsByClass("def ddef_d db").first();
 
-                Element llll=document.getElementsByClass("luna-example italic").first();
+                title=String.valueOf(lll.text()).trim();
+                int a=title.length();
+                finaltitle=String.valueOf(lll.text()).trim().substring(0,a-1);
+
+
+
+               /* Element llll=document.getElementsByClass("luna-example italic").first();
 
                 title=String.valueOf(lll.text()).trim();
                 xx=String.valueOf(llll.text()).trim();
@@ -118,7 +124,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else {
                     finaltitle=String.valueOf(lll.text()).trim();
-                }
+                }*/
+
 
 
 
