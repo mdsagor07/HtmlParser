@@ -112,7 +112,13 @@ public class MainActivity extends AppCompatActivity {
                 int b=xx.length();
 
                 int c=abs(a-b);
-                finaltitle=String.valueOf(lll.text()).substring(0,c);
+                if(a>b)
+                {
+                    finaltitle=String.valueOf(lll.text()).substring(0,c);
+                }
+                else {
+                    finaltitle=String.valueOf(lll.text()).trim();
+                }
 
 
 
