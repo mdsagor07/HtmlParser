@@ -16,6 +16,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
+import static java.lang.StrictMath.abs;
+
 
 //import org.w3c.dom.Document;
 
@@ -28,12 +30,15 @@ public class MainActivity extends AppCompatActivity {
 
     String title;
     String xx;
+    String finaltitle;
+
     ProgressDialog progressDialog;
 
     String url= "https://www.dictionary.com/browse/";
     String urlname="white";
     String urlend="?s=t";
     String urlendw;
+    String optimiseText="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
 
-            meaningtext.setText(title);
+            meaningtext.setText(finaltitle);
             progressDialog.dismiss();
 
 
@@ -97,20 +102,20 @@ public class MainActivity extends AppCompatActivity {
                 //title = document.title();
 
                 Element lll=document.getElementsByClass("one-click-content css-1p89gle e1q3nk1v4").first();
-                //Element lcEl = document.getElementsByClass("css-pnw38j e1hk9ate0").first();
-                //Elements spans = lll.select("one-click-content css-1p89gle e1q3nk1v4");
-               // Element llll=document.getElementsByClass("luna-example italic").first();
+
+                Element llll=document.getElementsByClass("luna-example italic").first();
 
                 title=String.valueOf(lll.text()).trim();
+                xx=String.valueOf(llll.text()).trim();
 
-                //xx=String.valueOf(llll.text());
                 int a=title.length();
                 int b=xx.length();
 
-                int c=a-b;
+                int c=abs(a-b);
+                finaltitle=String.valueOf(lll.text()).substring(0,c);
 
 
-                title=String.valueOf(lll.text()).trim();
+
 
 
 
